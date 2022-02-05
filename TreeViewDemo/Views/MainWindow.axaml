@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TreeViewDemo.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:models="clr-namespace:TreeViewDemo.Models"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="TreeViewDemo.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="TreeViewDemo">
+
+	<Design.DataContext>
+		<vm:MainWindowViewModel/>
+	</Design.DataContext>
+
+	<TreeView Items="{Binding Nodes}" 
+	          VerticalAlignment="Stretch"
+	          SelectionMode="Single">
+
+		<TreeView.ContextMenu>
+			<ContextMenu>
+					<MenuItem Command="{Binding CommandAddFolder}" CommandParameter="{Binding SelectedNode}" Header="Folder" />
+			</ContextMenu>
+		</TreeView.ContextMenu>
+		
+		<TreeView.DataTemplates>
+			<TreeDataTemplate DataType="models:Node" ItemsSource="{Binding Children}">
+				<TextBlock Foreground="Red" Text="{Binding Name}" HorizontalAlignment="Left"/>
+			</TreeDataTemplate>
+		</TreeView.DataTemplates>
+	</TreeView>
+</Window>
