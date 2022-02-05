@@ -14,6 +14,7 @@
 	</Design.DataContext>
 
 	<TreeView Items="{Binding Nodes}" 
+	          HorizontalAlignment="Stretch"
 	          VerticalAlignment="Stretch"
 	          SelectionMode="Single">
 
@@ -25,7 +26,7 @@
 		
 		<TreeView.DataTemplates>
 			<TreeDataTemplate DataType="models:Node" ItemsSource="{Binding Children}">
-				<TextBlock Foreground="Red" Text="{Binding Name}" HorizontalAlignment="Left"/>
+				<TextBlock Foreground="Black" Text="{Binding Name}" HorizontalAlignment="Stretch"/>
 			</TreeDataTemplate>
 		</TreeView.DataTemplates>
 	</TreeView>
